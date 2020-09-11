@@ -45,7 +45,7 @@ public class TimeClient {
 
     public static void main(String[] str) {
         try {
-            new TimeClient().connect(8080, "127.0.0.1");
+            new TimeClient().connect(8899, "127.0.0.1");
         } catch (Exception e) {
             e.printStackTrace();
         }

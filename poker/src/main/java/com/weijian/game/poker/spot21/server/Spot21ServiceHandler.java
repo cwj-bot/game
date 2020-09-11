@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2020-07-15 17:49
  */
 
-public class ServerHandler extends ChannelInboundHandlerAdapter {
+public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -29,12 +29,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
         ByteBuf res = Unpooled.copiedBuffer(currentTime.getBytes());
         ctx.writeAndFlush(res);
-        System.out.println("ServerHandler channelRead threadId" + Thread.currentThread().getId());
+        System.out.println("Spot21ServiceHandler channelRead threadId" + Thread.currentThread().getId());
 
         ctx.channel().eventLoop().scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                System.out.println("ServerHandler channelRead schedule threadId:" + Thread.currentThread().getId());
+                System.out.println("Spot21ServiceHandler channelRead schedule threadId:" + Thread.currentThread().getId());
             }
         }, 1 , 30, TimeUnit.SECONDS);
 
@@ -43,17 +43,17 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.write(Unpooled.copiedBuffer("channelActive".getBytes()));
-        System.out.println("ServerHandler channelActive threadId:" + Thread.currentThread().getId());
+        System.out.println("Spot21ServiceHandler channelActive threadId:" + Thread.currentThread().getId());
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("ServerHandler channelRegistered threadId:" + Thread.currentThread().getId());
+        System.out.println("Spot21ServiceHandler channelRegistered threadId:" + Thread.currentThread().getId());
     }
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("ServerHandler handlerAdded threadId:" + Thread.currentThread().getId());
+        System.out.println("Spot21ServiceHandler handlerAdded threadId:" + Thread.currentThread().getId());
     }
 
 
