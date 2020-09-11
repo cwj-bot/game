@@ -1,18 +1,20 @@
-plugins {
-    id 'java'
-    id 'war'
-}
+/* 子模块项目名，jar名 */
+archivesBaseName = 'poker'
 
-group 'com.weijian'
-version '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+jar.enabled = true
+/* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
+bootJar.enabled = false
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.projectlombok:lombok:1.18.10'
+    compile 'com.google.guava:guava:28.0-jre'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/io.netty/netty-all
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.6.Final'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.56'
 }

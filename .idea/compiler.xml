@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="senseu" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.pay.poker.main" target="1.8" />
+      <module name="com.pay.poker.test" target="1.8" />
+      <module name="com.weijian.poker.main" target="1.8" />
+      <module name="com.weijian.poker.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
