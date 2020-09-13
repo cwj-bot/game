@@ -23,8 +23,8 @@ public class Table {
     private Integer nowPlayerNum;
 
     private Pokers pokers;
-
-    private Integer status;
+    @Builder.Default // 0 未开始 1 开始
+    private Integer status = 0;
 
     private List<Player> players;
 

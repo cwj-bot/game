@@ -1,12 +1,14 @@
 package com.weijian.game.poker.spot21.service;
 
-import com.google.common.collect.Lists;
-import com.weijian.game.poker.model.Poker;
-import com.weijian.game.poker.model.Pokers;
+import com.weijian.game.poker.spot21.dto.CreateJoinTableRetVo;
+import com.weijian.game.poker.spot21.dto.OpeningTableRetVo;
+import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
 import com.weijian.game.poker.spot21.model.Table;
-import com.weijian.game.poker.util.SingletonTableCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 
 /**
@@ -16,49 +18,66 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
+@Slf4j
 public class Spot21Service {
 
-    public Integer createTable(Integer userNum, Player player) {
-        // TODO userNum check;
-        Integer tableId = SingletonTableCache.getInstance().getId();
-        Table table = Table.builder().tableId(SingletonTableCache.getInstance().getId())
-                .pokers(new Pokers())
-                .players(Lists.newArrayList(player))
-                .status(0)
-                .playerNum(userNum)
-                .nowPlayerNum(1)
-                .mainPlayerId(player.getPlayerId())
-                .build();
+    @Resource
+    private Spot21PlayerService playerService;
 
-        SingletonTableCache.getInstance().addTable(table);
-        return tableId;
+    @Resource
+    private Spot21TableService tableService;
+
+    /**
+     * 创建桌
+     *
+     * @param userNum
+     * @param playerName
+     * @return
+     */
+    public CreateJoinTableRetVo createTable(Integer userNum, String playerName) {
+        Player player = playerService.createPlayer(playerName, 1);
+        Table table = tableService.createTable(userNum, player);
+        CreateJoinTableRetVo ret = new CreateJoinTableRetVo();
+        ret.setIdentify(1);
+        ret.setNowPlayerNum(table.getNowPlayerNum());
+        ret.setPlayerId(player.getPlayerId());
+        ret.setPlayerNum(table.getPlayerNum());
+        ret.setTableId(table.getTableId());
+        ret.setStatus(table.getStatus());
+        return ret;
     }
 
-    public Table joinTable(Player player, Integer tableId) {
-        Table table = getTable(tableId);
-        // TODO check
-        if (table != null) {
-            if (table.getPlayerNum() > table.getNowPlayerNum()) {
-                table.setNowPlayerNum(table.getNowPlayerNum() + 1);
-                return table;
-            }
+
+    public CreateJoinTableRetVo joinTable(Integer tableId, String playerName) {
+        Player player = playerService.createPlayer(playerName, 2);
+        Table table = tableService.joinTable(player, tableId);
+        checkTable(table);
+        CreateJoinTableRetVo ret = new CreateJoinTableRetVo();
+        ret.setIdentify(2);
+        ret.setNowPlayerNum(table.getNowPlayerNum());
+        ret.setPlayerId(player.getPlayerId());
+        ret.setPlayerNum(table.getPlayerNum());
+        ret.setTableId(table.getTableId());
+        return ret;
+    }
+
+
+    public OpeningTableRetVo openingTable(Integer playerId, Integer tableId, Integer num) {
+        Table table = tableService.opening(playerId, tableId, num);
+        checkTable(table);
+        OpeningTableRetVo ret = new OpeningTableRetVo();
+        ret.setNowPlayerNum(table.getNowPlayerNum());
+        ret.setPlayerNum(table.getPlayerNum());
+        ret.setTableId(table.getTableId());
+        ret.setStatus(table.getStatus());
+        return ret;
+    }
+
+
+    private void checkTable(Table table) {
+        if (table == null) {
+            throw new SystemException("桌不存在");
         }
-        return null;
     }
 
-
-    public Table opening(Integer playerId, Integer tableId) {
-        Table table = getTable(tableId);
-        if (table != null) {
-            if (tableId.equals(table.getMainPlayerId())) {
-
-            }
-        }
-        return table;
-    }
-
-
-    private Table getTable(Integer tableId) {
-        return SingletonTableCache.getInstance().getTable(tableId);
-    }
 }

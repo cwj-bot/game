@@ -14,7 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SingletonTableCache {
 
-    private AtomicInteger id = new AtomicInteger(100);
+    private AtomicInteger tableId = new AtomicInteger(100);
+    private AtomicInteger playerId = new AtomicInteger(10000);
 
     private Map<Integer, Table> tableMap = new ConcurrentHashMap<>(64);
 
@@ -29,8 +30,12 @@ public class SingletonTableCache {
         return SingletonClassInstance.instance;
     }
 
-    public Integer getId() {
-        return id.addAndGet(1);
+    public Integer getTableId() {
+        return tableId.addAndGet(1);
+    }
+
+    public Integer getPlayerId() {
+        return tableId.addAndGet(1);
     }
 
     public void addTable(Table table) {
