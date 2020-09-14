@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f4b38d-08f8-4460-b435-5d00d21bb5ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/PlayerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateJoinTableRetVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/exception/SystemException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpenTableRet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/PrepareRet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/TakePokerRet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/PokerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/PokerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/SingletonTableCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/SingletonTableCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -35,12 +36,12 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+            <state relative-caret-position="573">
+              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,21 +50,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            <state relative-caret-position="340">
+              <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateJoinTableRetVo.java">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="127">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="30" column="70" lean-forward="true" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
+              <folding>
+                <element signature="e#1130#1131#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
@@ -71,11 +100,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/PlayerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="210">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -98,12 +136,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state relative-caret-position="1545">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2712#2713#0" expanded="true" />
-                <element signature="e#2786#2787#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,34 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/PokerTools.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#454#455#0" expanded="true" />
-                <element signature="e#509#510#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+            <state relative-caret-position="705">
+              <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,34 +170,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/model/Poker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="94" selection-start-line="16" selection-start-column="94" selection-end-line="16" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -233,9 +219,7 @@
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/demo/timeServer/client/TimeClient.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/timeServer/client/TimeClient.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21Server.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/PokerService.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Poker.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Pokers.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/util/PokerService.java" />
@@ -250,25 +234,33 @@
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateTableRetVo.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/model/IdType.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/SingletonTableCache.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/Spot21TableService.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/PlayerService.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/PokerApplication.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateJoinTableRetVo.java" />
-        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpenTableRet.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/PrepareRet.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/TakePokerRet.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java" />
         <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java" />
+        <option value="$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="34" />
+    <option name="y" value="23" />
+    <option name="width" value="1406" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -278,6 +270,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -359,7 +352,40 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="poker" type="462c0819:PsiDirectoryNode" />
               <item name="spot21" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="game" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="poker" type="462c0819:PsiDirectoryNode" />
+              <item name="spot21" type="462c0819:PsiDirectoryNode" />
               <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="game" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="poker" type="462c0819:PsiDirectoryNode" />
+              <item name="spot21" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="game" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="poker" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="poker" type="462c0819:PsiDirectoryNode" />
+              <item name="spot21" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="game" type="b2602c69:ProjectViewProjectNode" />
@@ -387,7 +413,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -397,7 +422,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1599976354528" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600049186367" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -430,7 +455,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PokerApplication (1)">
+  <component name="RunManager" selected="Application.TimeClient">
     <configuration name="PokerTools" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.weijian.game.poker.util.PokerTools" />
       <module name="com.weijian.poker.main" />
@@ -473,8 +498,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PokerTools" />
         <item itemvalue="Application.TimeClient" />
+        <item itemvalue="Application.PokerTools" />
       </list>
     </recent_temporary>
   </component>
@@ -488,65 +513,60 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599807390496</updated>
-      <workItem from="1599807393816" duration="21834000" />
+      <workItem from="1599807393816" duration="25095000" />
+      <workItem from="1600047742715" duration="1343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21834000" />
+    <option name="totallyTimeSpent" value="26438000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="34" y="23" width="1406" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Web" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22344323" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2690616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Build" weight="0.5511811" />
-      <window_info anchor="bottom" id="Spring" />
-      <window_info anchor="bottom" id="Terminal" weight="0.4075235" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3291536" />
-      <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283767" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.40020898" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5262467" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Gradle" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.5511811" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.4075235" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.328084" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/poker/src/test/java/com/weijian/game/poker/PokerApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/test/java/com/weijian/game/poker/PokerApplicationTests.java" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
@@ -564,32 +584,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/Main.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/Main.java" />
     <entry file="file://$PROJECT_DIR$/game.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/28.0-jre/guava-28.0-jre.jar!/com/google/common/collect/Lists.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -665,20 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/9.0.17/22819cd1fae898e96ca84a3e8394b0f0b15d9f17/tomcat-embed-core-9.0.17-sources.jar!/org/apache/catalina/core/ApplicationContext.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -697,13 +680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/model/IdType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/model/IdType.java" />
     <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/SingletonTableCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -723,16 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/util/PokerTools.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
@@ -745,30 +712,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="94" selection-start-line="16" selection-start-column="94" selection-end-line="16" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/model/Poker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/Test.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/TakePokerRet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/PrepareRet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpenTableRet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateJoinTableRetVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/PlayerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -785,20 +818,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/PlayerService.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Table.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="240">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -812,62 +838,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/RetVo.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="573">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/CreateJoinTableRetVo.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21PlayerService.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="340">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/dto/OpeningTableRetVo.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21TableService.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/ChildChannelHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        <state relative-caret-position="60">
+          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/server/Spot21ServiceHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/service/TableService.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="480">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2712#2713#0" expanded="true" />
-            <element signature="e#2786#2787#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/service/Spot21Service.java">
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        <state relative-caret-position="269">
+          <caret line="30" column="70" lean-forward="true" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poker/src/main/java/com/weijian/game/poker/spot21/client/TimeClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
         </state>
       </provider>
     </entry>

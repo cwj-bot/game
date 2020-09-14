@@ -17,4 +17,6 @@ import lombok.NoArgsConstructor;
 public class RetVo {
 
     private String msg;
+
+    private String interfaceType;
 }

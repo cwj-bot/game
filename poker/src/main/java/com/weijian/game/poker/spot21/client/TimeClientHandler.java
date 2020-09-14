@@ -17,17 +17,14 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-
-        String body = new String(req, "UTF-8");
-        System.out.println("time info :" + body);
+        System.out.println("time info :" + msg);
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("time".getBytes()));
-        ctx.write(Unpooled.copiedBuffer("time".getBytes()));
+        byte[] req = "time".getBytes();
+        ByteBuf msg = Unpooled.buffer(req.length);
+        msg.writeBytes(req);
+        ctx.writeAndFlush(msg);
     }
 }

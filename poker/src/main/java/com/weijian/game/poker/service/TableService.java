@@ -72,7 +72,7 @@ public abstract class TableService {
                 List<Player> players = table.getPlayers();
                 PokerTools.shuffle(pokers); // 洗牌
                 // 发牌
-                for (int i = 0 ; i < num ;i ++ ) {
+                for (int i = 0; i < num; i++) {
                     for (Player player : players) {
 
                         List<Poker> playerPokers = pokers.getPokers();
@@ -80,7 +80,7 @@ public abstract class TableService {
                             playerPokers = Lists.newArrayList();
                         }
                         Poker poker = PokerTools.take(pokers);
-                        if (player == null) {
+                        if (poker == null) {
                             throw new SystemException("扑克牌发完了");
                         }
                         playerPokers.add(poker);
@@ -97,9 +97,37 @@ public abstract class TableService {
     // 开盘结算
     protected abstract Table openTable(Integer playerId, Integer tableId);
 
+    // 抓牌
+    protected abstract Table takePoker(Integer playerId, Integer tableId, Integer num);
+
+    public Boolean prepare(Integer playerId, Integer tableId) {
+        return updatePlayerStatus(playerId, tableId, 1);
+    }
+
+
+    public Boolean pass(Integer playerId, Integer tableId) {
+        return updatePlayerStatus(playerId, tableId, 3);
+    }
+
+
+    private Boolean updatePlayerStatus(Integer playerId, Integer tableId, Integer status) {
+        Table table = getTable(tableId);
+        if (table == null) {
+            throw new SystemException("桌不存在");
+        }
+        List<Player> players = table.getPlayers();
+        for (Player player : players) {
+            if (playerId.equals(player.getPlayerId())) {
+                player.setStatus(status);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // 校验状态
     protected Boolean checkPrepare(List<Player> players, int status) {
-        for (Player player: players) {
+        for (Player player : players) {
             if (player.getStatus() != status) {
                 return false;
             }

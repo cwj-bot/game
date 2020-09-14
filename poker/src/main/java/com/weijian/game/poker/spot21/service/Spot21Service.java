@@ -1,7 +1,6 @@
 package com.weijian.game.poker.spot21.service;
 
-import com.weijian.game.poker.spot21.dto.CreateJoinTableRetVo;
-import com.weijian.game.poker.spot21.dto.OpeningTableRetVo;
+import com.weijian.game.poker.spot21.dto.*;
 import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
 import com.weijian.game.poker.spot21.model.Table;
@@ -71,6 +70,34 @@ public class Spot21Service {
         ret.setTableId(table.getTableId());
         ret.setStatus(table.getStatus());
         return ret;
+    }
+
+
+    public OpenTableRet openTable(Integer playerId, Integer tableId) {
+        Table table = tableService.openTable(playerId, tableId);
+        checkTable(table);
+        OpenTableRet ret = new OpenTableRet();
+        ret.setTable(table);
+        return ret;
+    }
+
+
+    public PrepareRet prepare(Integer playerId, Integer tableId) {
+        PrepareRet ret = new PrepareRet();
+        ret.setResult(tableService.prepare(playerId, tableId));
+        return ret;
+    }
+
+
+    public TakePokerRet takePoker(Integer playerId, Integer tableId) {
+        tableService.takePoker(playerId, tableId, 1);
+        return new TakePokerRet();
+    }
+
+
+    public TakePokerRet pass(Integer playerId, Integer tableId) {
+        tableService.pass(playerId, tableId);
+        return new TakePokerRet();
     }
 
 

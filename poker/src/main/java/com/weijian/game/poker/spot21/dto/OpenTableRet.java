@@ -1,5 +1,6 @@
 package com.weijian.game.poker.spot21.dto;
 
+import com.weijian.game.poker.spot21.model.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,19 +9,12 @@ import lombok.NoArgsConstructor;
  * <p> @Description
  *
  * @author weijian
- * @date 2020-09-13 12:11
+ * @date 2020-09-13 15:19
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OpeningTableRetVo extends RetVo {
+public class OpenTableRet extends RetVo {
 
-    private Integer tableId;
-
-    private Integer playerNum;
-
-    private Integer nowPlayerNum;
-
-    private Integer status;
+    private Table table;
 }
