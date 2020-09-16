@@ -15,41 +15,44 @@ import javax.annotation.PostConstruct;
  * @author weijian
  * @date 2020-07-15 17:38
  */
-@Service
 public class Spot21Server {
 
-    @PostConstruct
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
+
+    public Spot21Server() {
+        bossGroup = new NioEventLoopGroup(1);
+        workerGroup = new NioEventLoopGroup();
+    }
+
     public void start() {
         try {
-            new Spot21Server().bind(8899);
+            bind(8899);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private void bind(int port) throws Exception {
+        ServerBootstrap serverBootstrap = new ServerBootstrap();
 
-    public void bind(int port) throws Exception {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-
-        try {
-            ServerBootstrap serverBootstrap = new ServerBootstrap();
-
-            serverBootstrap.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childOption(ChannelOption.TCP_NODELAY, true)
-                    .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
+        serverBootstrap.group(bossGroup, workerGroup)
+                .channel(NioServerSocketChannel.class)
+                .childOption(ChannelOption.TCP_NODELAY, true)
+                .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
 //                    .handler(new SimpleServerHandler())
-                    .childHandler(new ChildChannelHandler());
+                .childHandler(new ChildChannelHandler());
 
-            ChannelFuture f = serverBootstrap.bind(port).sync();
+        ChannelFuture f = serverBootstrap.bind(port).sync();
 
-            f.channel().closeFuture().sync();
-        } catch (Exception e) {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
-        }
+        f.channel().closeFuture().sync();
     }
+
+    public void stop() {
+        bossGroup.shutdownGracefully();
+        workerGroup.shutdownGracefully();
+    }
+
 
 //    private static class SimpleServerHandler extends ChannelInboundHandlerAdapter {
 //        @Override

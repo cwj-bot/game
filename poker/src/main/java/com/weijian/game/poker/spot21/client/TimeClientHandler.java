@@ -14,17 +14,29 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class TimeClientHandler extends ChannelInboundHandlerAdapter {
 
+    private int counter;
+
+    private byte[] req;
+
+
+    public TimeClientHandler() {
+        req = ("hello" + System.getProperty("line.separator")).getBytes();
+    }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
-        System.out.println("time info :" + msg);
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        //拿到的msg已经是解码成字符串之后的应答消息了。
+        String body = (String) msg;
+        System.out.println(body + ++counter);
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        byte[] req = "time".getBytes();
-        ByteBuf msg = Unpooled.buffer(req.length);
-        msg.writeBytes(req);
-        ctx.writeAndFlush(msg);
+        ByteBuf message = null;
+        for (int i = 0; i < 100; i++) {
+            message = Unpooled.buffer(req.length);
+            message.writeBytes(req);
+            ctx.writeAndFlush(message);
+        }
     }
 }
