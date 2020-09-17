@@ -46,7 +46,12 @@ public class Spot21Service {
         return ret;
     }
 
-
+    /**
+     * 加入桌
+     * @param tableId
+     * @param playerName
+     * @return
+     */
     public CreateJoinTableRetVo joinTable(Integer tableId, String playerName) {
         Player player = playerService.createPlayer(playerName, 2);
         Table table = tableService.joinTable(player, tableId);
@@ -60,7 +65,13 @@ public class Spot21Service {
         return ret;
     }
 
-
+    /**
+     * 开始
+     * @param playerId
+     * @param tableId
+     * @param num
+     * @return
+     */
     public OpeningTableRetVo openingTable(Integer playerId, Integer tableId, Integer num) {
         Table table = tableService.opening(playerId, tableId, num);
         checkTable(table);
@@ -72,7 +83,12 @@ public class Spot21Service {
         return ret;
     }
 
-
+    /**
+     * 开盘
+     * @param playerId
+     * @param tableId
+     * @return
+     */
     public OpenTableRet openTable(Integer playerId, Integer tableId) {
         Table table = tableService.openTable(playerId, tableId);
         checkTable(table);
@@ -81,20 +97,35 @@ public class Spot21Service {
         return ret;
     }
 
-
+    /**
+     * 玩家准备
+     * @param playerId
+     * @param tableId
+     * @return
+     */
     public PrepareRet prepare(Integer playerId, Integer tableId) {
         PrepareRet ret = new PrepareRet();
         ret.setResult(tableService.prepare(playerId, tableId));
         return ret;
     }
 
-
+    /**
+     * 发牌
+     * @param playerId
+     * @param tableId
+     * @return
+     */
     public TakePokerRet takePoker(Integer playerId, Integer tableId) {
         tableService.takePoker(playerId, tableId, 1);
         return new TakePokerRet();
     }
 
-
+    /**
+     * 过
+     * @param playerId
+     * @param tableId
+     * @return
+     */
     public TakePokerRet pass(Integer playerId, Integer tableId) {
         tableService.pass(playerId, tableId);
         return new TakePokerRet();

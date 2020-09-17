@@ -27,7 +27,7 @@ public abstract class TableService {
 
     public Table createTable(Integer userNum, Player player) {
         if (userNum < 0 || userNum > USER_NUM_LIMIT) {
-            throw new SystemException("每桌玩家数最多8人");
+            throw new IllegalArgumentException("每桌玩家数最多8人");
         }
         Integer tableId = SingletonTableCache.getInstance().getTableId();
         Table table = Table.builder().tableId(tableId)
@@ -55,7 +55,7 @@ public abstract class TableService {
                 return table;
             }
         } else {
-            throw new SystemException("不能参加已经开始的桌，请等待本场次结束。");
+            throw new IllegalArgumentException("不能参加已经开始的桌，请等待本场次结束。");
         }
         return null;
     }

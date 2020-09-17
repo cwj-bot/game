@@ -1,21 +1,20 @@
 package com.weijian.game.poker.spot21.server;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Maps;
+import com.weijian.game.poker.spot21.dto.InterFaceMsgReq;
 import com.weijian.game.poker.spot21.service.Spot21Service;
+import com.weijian.game.poker.util.Constant;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.MapUtils;
+import org.springframework.util.Assert;
 
-
-import java.util.Map;
 
 import static com.weijian.game.poker.PokerApplication.context;
+
 /**
- * <p> @Description
+ * <p> @Description 21点handler
  *
  * @author weijian
  */
@@ -27,20 +26,89 @@ public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-
-        System.out.println("server channelRead info :" + msg);
-        Map<String, Object> reqMap = Maps.newHashMap();
+        log.info("server channelRead info :" + msg);
         try {
-            String body = (String)msg;
-            reqMap = JSONObject.parseObject(body.trim());
+            String body = (String) msg;
+            assignment(ctx, JSONObject.parseObject(body.trim(), InterFaceMsgReq.class));
         } catch (Exception e) {
             log.error("msg = {}, json error: ", msg, e);
-            return;
         }
-        String interfaceCode = MapUtils.getString(reqMap, "interfaceCode");
-
-//        ChannelMsgSender.send(ctx,  body + " world");
     }
+
+    private void assignment(ChannelHandlerContext ctx, InterFaceMsgReq interFaceMsgReq) {
+        String interfaceCode = interFaceMsgReq.getInterfaceType();
+
+        switch (interfaceCode) {
+            case Constant.INTERFACE_21_SPOT_CREATE_TABLE_1: {
+                String playerName = interFaceMsgReq.getPlayerName();
+                Integer playerNum = interFaceMsgReq.getPlayerNum();
+                Assert.notNull(playerName, "玩家名称不能为空");
+                Assert.notNull(playerNum, "玩家名称不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.createTable(playerNum, playerName), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_JOIN_TABLE_2: {
+                String playerName = interFaceMsgReq.getPlayerName();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerName, "玩家名称不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.joinTable(tableId, playerName), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_OPENING_3: {
+                Integer playerId = interFaceMsgReq.getPlayerId();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerId, "玩家ID不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.openingTable(playerId, tableId, 2), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_OPEN_4: {
+                Integer playerId = interFaceMsgReq.getPlayerId();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerId, "玩家ID不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.openTable(playerId, tableId), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_PREPARE_5: {
+                Integer playerId = interFaceMsgReq.getPlayerId();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerId, "玩家ID不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.prepare(playerId, tableId), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_GET_POKER_6: {
+                Integer playerId = interFaceMsgReq.getPlayerId();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerId, "玩家ID不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.takePoker(playerId, tableId), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_PASS_7: {
+                Integer playerId = interFaceMsgReq.getPlayerId();
+                Integer tableId = interFaceMsgReq.getTableId();
+                Assert.notNull(playerId, "玩家ID不能为空");
+                Assert.notNull(tableId, "桌号不能为空");
+                ChannelMsgSender.send(ctx,  spot21Service.pass(playerId, tableId), interfaceCode);
+            }
+            break;
+            case Constant.INTERFACE_21_SPOT_CLIENT_SERVER_8: {
+//                Integer playerId = interFaceMsgReq.getPlayerId();
+//                Integer tableId = interFaceMsgReq.getTableId();
+//                Assert.notNull(playerId, "玩家ID不能为空");
+//                Assert.notNull(tableId, "桌号不能为空");
+//                ChannelMsgSender.send(ctx,  spot21Service.(playerId, tableId), interfaceCode);
+            }
+            break;
+            default: {
+
+            }
+        }
+    }
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
