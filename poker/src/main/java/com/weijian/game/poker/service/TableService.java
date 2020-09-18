@@ -5,6 +5,7 @@ import com.weijian.game.poker.model.Poker;
 import com.weijian.game.poker.model.Pokers;
 import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
+import com.weijian.game.poker.spot21.model.PlayerStatus;
 import com.weijian.game.poker.spot21.model.Table;
 import com.weijian.game.poker.util.PokerTools;
 import com.weijian.game.poker.util.SingletonTableCache;
@@ -104,12 +105,12 @@ public abstract class TableService {
     protected abstract Table takePoker(Integer playerId, Integer tableId, Integer num);
 
     public Boolean prepare(Integer playerId, Integer tableId) {
-        return updatePlayerStatus(playerId, tableId, 1);
+        return updatePlayerStatus(playerId, tableId, PlayerStatus.PREPARE.getCode());
     }
 
 
     public Boolean pass(Integer playerId, Integer tableId) {
-        return updatePlayerStatus(playerId, tableId, 4);
+        return updatePlayerStatus(playerId, tableId, PlayerStatus.END.getCode());
     }
 
 

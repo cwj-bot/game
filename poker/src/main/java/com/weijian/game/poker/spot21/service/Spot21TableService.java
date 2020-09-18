@@ -5,6 +5,7 @@ import com.weijian.game.poker.model.Pokers;
 import com.weijian.game.poker.service.TableService;
 import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
+import com.weijian.game.poker.spot21.model.PlayerStatus;
 import com.weijian.game.poker.spot21.model.Table;
 import com.weijian.game.poker.util.PokerTools;
 import lombok.extern.slf4j.Slf4j;
@@ -46,11 +47,12 @@ public class Spot21TableService extends TableService {
             // 发牌
             for (int i = 0; i < num; i++) {
                 for (Player player : players) {
-                    if (playerId.equals(player.getPlayerId()) && player.getStatus() == 2) {
+                    if (playerId.equals(player.getPlayerId()) && player.getStatus() == PlayerStatus.ENABLE.getCode()) {
                         List<Poker> playerPokers = pokers.getPokers();
                         Poker poker = PokerTools.take(pokers);
                         playerPokers.add(poker);
                         player.setOwnPokers(playerPokers);
+                        player.setStatus(PlayerStatus.DISABLE.getCode());
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package com.weijian.game.poker.spot21.model;
 
 import com.weijian.game.poker.model.Poker;
+import com.weijian.game.poker.util.PokerTools;
 import lombok.Builder;
 import lombok.Data;
 
@@ -35,4 +36,9 @@ public class Player {
      */
     @Builder.Default
     private Integer identity = 2;
+
+    public Float getPokerValue() {
+       return PokerTools.calculationValues(ownPokers);
+    }
+
 }

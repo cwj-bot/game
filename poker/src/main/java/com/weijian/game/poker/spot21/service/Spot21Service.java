@@ -3,6 +3,7 @@ package com.weijian.game.poker.spot21.service;
 import com.weijian.game.poker.spot21.dto.*;
 import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
+import com.weijian.game.poker.spot21.model.PlayerStatus;
 import com.weijian.game.poker.spot21.model.Table;
 import com.weijian.game.poker.spot21.server.ChannelMsgSender;
 import com.weijian.game.poker.util.Constant;
@@ -101,9 +102,9 @@ public class Spot21Service {
         List<Player> players = table.getPlayers();
         for (Player player : players) {
             if (player.getPlayerId().equals(playerId)) {
-                player.setStatus(2);
+                player.setStatus(PlayerStatus.ENABLE.getCode());
             } else {
-                player.setStatus(3);
+                player.setStatus(PlayerStatus.DISABLE.getCode());
             }
             pushPlayerInfo(player, tableId);
         }
@@ -177,18 +178,27 @@ public class Spot21Service {
     public void pushNextPlayer(Integer playerId, Integer tableId) {
         Table table = tableService.getTable(tableId);
         LinkedList<Player> players = table.getPlayers();
-
         Iterator<Player> iterator = players.iterator();
         while (iterator.hasNext()) {
             Player player = iterator.next();
             if (player.getPlayerId().equals(playerId)) {
-                player.setStatus(3); // 不可要牌
-                if (iterator.hasNext()) {
+                pushPlayerInfo(player, tableId);
+                while (iterator.hasNext()) {
                     Player next = iterator.next();
-                    // TODO
-                    next.setStatus(2); // 可要牌
-                    pushPlayerInfo(player, tableId);
+                    if (next.getStatus() != PlayerStatus.END.getCode()) {
+                        next.setStatus(PlayerStatus.ENABLE.getCode()); // 可要
+                        pushPlayerInfo(next, tableId);
+                        return;
+                    }
                 }
+            }
+        }
+
+        for (Player next : players) {
+            if (next.getStatus() != PlayerStatus.END.getCode()) {
+                next.setStatus(PlayerStatus.ENABLE.getCode()); // 可要
+                pushPlayerInfo(next, tableId);
+                return;
             }
         }
     }

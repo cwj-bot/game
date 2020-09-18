@@ -98,6 +98,7 @@ public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
                 Assert.notNull(playerId, "玩家ID不能为空");
                 Assert.notNull(tableId, "桌号不能为空");
                 ChannelMsgSender.send(ctx,  spot21Service.pass(playerId, tableId), interfaceCode);
+                spot21Service.pushNextPlayer(playerId, tableId);
             }
             break;
             case Constant.INTERFACE_21_SPOT_CLIENT_SERVER_8: {
