@@ -4,6 +4,8 @@
       <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.1.6.Final/netty-all-4.1.6.Final.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-all/4.1.6.Final/699ff4842f3ad4aff00b0835f07fede8563e4513/netty-all-4.1.6.Final-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

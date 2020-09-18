@@ -4,7 +4,7 @@ import com.weijian.game.poker.model.Pokers;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
+import java.util.LinkedList;
 
 
 /**
@@ -26,7 +26,7 @@ public class Table {
     @Builder.Default // 0 未开始(结束) 1 开始
     private Integer status = 0;
 
-    private List<Player> players;
+    private LinkedList<Player> players;
 
     private Integer mainPlayerId;
 }

@@ -11,6 +11,7 @@ import com.weijian.game.poker.util.SingletonTableCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -30,8 +31,10 @@ public abstract class TableService {
             throw new IllegalArgumentException("每桌玩家数最多8人");
         }
         Integer tableId = SingletonTableCache.getInstance().getTableId();
+        LinkedList<Player> linkedList = Lists.newLinkedList();
+        linkedList.addFirst(player);
         Table table = Table.builder().tableId(tableId)
-                .players(Lists.newArrayList(player))
+                .players(linkedList)
                 .status(0)
                 .playerNum(userNum)
                 .nowPlayerNum(1)
@@ -50,8 +53,8 @@ public abstract class TableService {
         if (table.getStatus() == 0) {
             if (table.getPlayerNum() > table.getNowPlayerNum()) {
                 table.setNowPlayerNum(table.getNowPlayerNum() + 1);
-                List<Player> players = table.getPlayers();
-                players.add(player);
+                LinkedList<Player> players = table.getPlayers();
+                players.addLast(player);
                 return table;
             }
         } else {
@@ -106,7 +109,7 @@ public abstract class TableService {
 
 
     public Boolean pass(Integer playerId, Integer tableId) {
-        return updatePlayerStatus(playerId, tableId, 3);
+        return updatePlayerStatus(playerId, tableId, 4);
     }
 
 
@@ -136,7 +139,18 @@ public abstract class TableService {
     }
 
 
-    protected Table getTable(Integer tableId) {
+    public Table getTable(Integer tableId) {
         return SingletonTableCache.getInstance().getTable(tableId);
+    }
+
+
+    public Player getPlayer(Integer playerId, Integer tableId) {
+        Table table = getTable(tableId);
+        for (Player player : table.getPlayers()) {
+            if (player.getPlayerId().equals(playerId)) {
+                return player;
+            }
+        }
+        return null;
     }
 }

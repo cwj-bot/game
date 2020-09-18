@@ -1,10 +1,12 @@
 package com.weijian.game.poker.spot21.server;
 
 import com.alibaba.fastjson.JSONObject;
+import com.weijian.game.poker.spot21.dto.CreateJoinTableRetVo;
 import com.weijian.game.poker.spot21.dto.InterFaceMsgReq;
 import com.weijian.game.poker.spot21.service.Spot21Service;
 import com.weijian.game.poker.util.Constant;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +46,7 @@ public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
                 Integer playerNum = interFaceMsgReq.getPlayerNum();
                 Assert.notNull(playerName, "玩家名称不能为空");
                 Assert.notNull(playerNum, "玩家名称不能为空");
-                ChannelMsgSender.send(ctx,  spot21Service.createTable(playerNum, playerName), interfaceCode);
+                ChannelMsgSender.send(ctx,  spot21Service.createTable(playerNum, playerName, ctx.channel()), interfaceCode);
             }
             break;
             case Constant.INTERFACE_21_SPOT_JOIN_TABLE_2: {
@@ -52,7 +54,9 @@ public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
                 Integer tableId = interFaceMsgReq.getTableId();
                 Assert.notNull(playerName, "玩家名称不能为空");
                 Assert.notNull(tableId, "桌号不能为空");
-                ChannelMsgSender.send(ctx,  spot21Service.joinTable(tableId, playerName), interfaceCode);
+                CreateJoinTableRetVo createJoinTableRetVo = spot21Service.joinTable(tableId, playerName, ctx.channel());
+                ChannelMsgSender.send(ctx,  createJoinTableRetVo, interfaceCode);
+                spot21Service.pushPlayerInfo(ctx.channel(), createJoinTableRetVo.getPlayerId(), tableId);
             }
             break;
             case Constant.INTERFACE_21_SPOT_OPENING_3: {
@@ -85,6 +89,7 @@ public class Spot21ServiceHandler extends ChannelInboundHandlerAdapter {
                 Assert.notNull(playerId, "玩家ID不能为空");
                 Assert.notNull(tableId, "桌号不能为空");
                 ChannelMsgSender.send(ctx,  spot21Service.takePoker(playerId, tableId), interfaceCode);
+                spot21Service.pushNextPlayer(playerId, tableId);
             }
             break;
             case Constant.INTERFACE_21_SPOT_PASS_7: {

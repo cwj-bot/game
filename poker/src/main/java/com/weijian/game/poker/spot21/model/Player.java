@@ -26,7 +26,7 @@ public class Player {
     @Builder.Default
     private Float pokerValue = 0f;
     /**
-     * 状态 未准备 0 准备 1 可要牌 2 不可要牌 3
+     * 状态 未准备 0, 准备 1, 可要牌 2, 不可要牌 3, 结束 4
      */
     @Builder.Default
     private Integer status = 0;

@@ -4,10 +4,17 @@ import com.weijian.game.poker.spot21.dto.*;
 import com.weijian.game.poker.spot21.exception.SystemException;
 import com.weijian.game.poker.spot21.model.Player;
 import com.weijian.game.poker.spot21.model.Table;
+import com.weijian.game.poker.spot21.server.ChannelMsgSender;
+import com.weijian.game.poker.util.Constant;
+import com.weijian.game.poker.util.SingletonChannelCache;
+import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -33,7 +40,7 @@ public class Spot21Service {
      * @param playerName
      * @return
      */
-    public CreateJoinTableRetVo createTable(Integer userNum, String playerName) {
+    public CreateJoinTableRetVo createTable(Integer userNum, String playerName, Channel channel) {
         Player player = playerService.createPlayer(playerName, 1);
         Table table = tableService.createTable(userNum, player);
         CreateJoinTableRetVo ret = new CreateJoinTableRetVo();
@@ -43,30 +50,40 @@ public class Spot21Service {
         ret.setPlayerNum(table.getPlayerNum());
         ret.setTableId(table.getTableId());
         ret.setStatus(table.getStatus());
+        bindChannel(channel, key(table.getTableId(), player.getPlayerId()));
         return ret;
+    }
+
+    private void bindChannel(Channel channel, String key) {
+        if (channel.isActive()) {
+            SingletonChannelCache.getInstance().add(key, channel);
+        }
     }
 
     /**
      * 加入桌
+     *
      * @param tableId
      * @param playerName
      * @return
      */
-    public CreateJoinTableRetVo joinTable(Integer tableId, String playerName) {
+    public CreateJoinTableRetVo joinTable(Integer tableId, String playerName, Channel channel) {
         Player player = playerService.createPlayer(playerName, 2);
         Table table = tableService.joinTable(player, tableId);
         checkTable(table);
         CreateJoinTableRetVo ret = new CreateJoinTableRetVo();
         ret.setIdentify(2);
         ret.setNowPlayerNum(table.getNowPlayerNum());
-        ret.setPlayerId(player.getPlayerId());
         ret.setPlayerNum(table.getPlayerNum());
+        ret.setPlayerId(player.getPlayerId());
         ret.setTableId(table.getTableId());
+        bindChannel(channel, key(table.getTableId(), player.getPlayerId()));
         return ret;
     }
 
     /**
      * 开始
+     *
      * @param playerId
      * @param tableId
      * @param num
@@ -80,11 +97,22 @@ public class Spot21Service {
         ret.setPlayerNum(table.getPlayerNum());
         ret.setTableId(table.getTableId());
         ret.setStatus(table.getStatus());
+
+        List<Player> players = table.getPlayers();
+        for (Player player : players) {
+            if (player.getPlayerId().equals(playerId)) {
+                player.setStatus(2);
+            } else {
+                player.setStatus(3);
+            }
+            pushPlayerInfo(player, tableId);
+        }
         return ret;
     }
 
     /**
      * 开盘
+     *
      * @param playerId
      * @param tableId
      * @return
@@ -99,6 +127,7 @@ public class Spot21Service {
 
     /**
      * 玩家准备
+     *
      * @param playerId
      * @param tableId
      * @return
@@ -111,6 +140,7 @@ public class Spot21Service {
 
     /**
      * 发牌
+     *
      * @param playerId
      * @param tableId
      * @return
@@ -122,6 +152,7 @@ public class Spot21Service {
 
     /**
      * 过
+     *
      * @param playerId
      * @param tableId
      * @return
@@ -129,6 +160,42 @@ public class Spot21Service {
     public TakePokerRet pass(Integer playerId, Integer tableId) {
         tableService.pass(playerId, tableId);
         return new TakePokerRet();
+    }
+
+
+    private void pushPlayerInfo(Player player, Integer tableId) {
+        Channel channel = SingletonChannelCache.getInstance().get(key(tableId, player.getPlayerId()));
+        ChannelMsgSender.send(channel, new HeartBeatRetVo(player), Constant.INTERFACE_21_SPOT_CLIENT_SERVER_8);
+    }
+
+    public void pushPlayerInfo(Channel channel, Integer playerId, Integer tableId) {
+        Player player = tableService.getPlayer(playerId, tableId);
+        ChannelMsgSender.send(channel, new HeartBeatRetVo(player), Constant.INTERFACE_21_SPOT_CLIENT_SERVER_8);
+    }
+
+
+    public void pushNextPlayer(Integer playerId, Integer tableId) {
+        Table table = tableService.getTable(tableId);
+        LinkedList<Player> players = table.getPlayers();
+
+        Iterator<Player> iterator = players.iterator();
+        while (iterator.hasNext()) {
+            Player player = iterator.next();
+            if (player.getPlayerId().equals(playerId)) {
+                player.setStatus(3); // 不可要牌
+                if (iterator.hasNext()) {
+                    Player next = iterator.next();
+                    // TODO
+                    next.setStatus(2); // 可要牌
+                    pushPlayerInfo(player, tableId);
+                }
+            }
+        }
+    }
+
+
+    private String key(Integer tableId, Integer playerId) {
+        return tableId + "_" + playerId;
     }
 
 
