@@ -11,6 +11,7 @@ import com.weijian.game.poker.util.SingletonChannelCache;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.Iterator;
@@ -163,6 +164,17 @@ public class Spot21Service {
         return new TakePokerRet();
     }
 
+    /**
+     * 心跳重连
+     * @param channel
+     * @param playerId
+     * @param tableId
+     */
+    public void heartBeat(Channel channel, Integer playerId, Integer tableId) {
+        pushPlayerInfo(channel, playerId, tableId);
+        bindChannel(channel, key(tableId, playerId));
+    }
+
 
     private void pushPlayerInfo(Player player, Integer tableId) {
         Channel channel = SingletonChannelCache.getInstance().get(key(tableId, player.getPlayerId()));
@@ -201,6 +213,17 @@ public class Spot21Service {
                 return;
             }
         }
+    }
+
+
+    public void offline(String key) {
+        String[] str = key.split("_");
+        Integer tableId = Integer.valueOf(str[0]);
+        Integer playerId = Integer.valueOf(str[1]);
+
+        Table table = tableService.openTable(playerId, tableId);
+        List<Player> players = table.getPlayers();
+        players.removeIf(player -> player.getPlayerId().equals(playerId));
     }
 
 

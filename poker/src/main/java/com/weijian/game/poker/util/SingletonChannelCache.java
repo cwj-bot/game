@@ -1,6 +1,7 @@
 package com.weijian.game.poker.util;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelId;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,7 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class SingletonChannelCache {
 
-    private Map<String, Channel> channelMap = new ConcurrentHashMap<>(64);
+    private static Map<String, Channel> playerChannelMap = new ConcurrentHashMap<>(64);
+    private static Map<ChannelId, String> channelPlayerMap = new ConcurrentHashMap<>(64);
 
     private static class SingletonClassInstance {
         private static final SingletonChannelCache instance = new SingletonChannelCache();
@@ -27,10 +29,32 @@ public class SingletonChannelCache {
     }
 
     public void add(String key, Channel channel) {
-        channelMap.put(key, channel);
+        playerChannelMap.put(key, channel);
+        channelPlayerMap.put(channel.id(), key);
     }
 
     public Channel get(String key) {
-        return channelMap.get(key);
+        return playerChannelMap.get(key);
     }
+
+    public String get(Channel channel) {
+        return channelPlayerMap.get(channel.id());
+    }
+
+    public void remove(String key) {
+        Channel channel = get(key);
+        if (key != null) {
+            playerChannelMap.remove(key);
+            channelPlayerMap.remove(channel.id());
+        }
+    }
+
+    public void remove(Channel channel) {
+        String key = get(channel);
+        if (key != null) {
+            playerChannelMap.remove(key);
+            channelPlayerMap.remove(channel.id());
+        }
+    }
+
 }
